@@ -1,0 +1,26 @@
+长屏有传感器的地方显示不了，一条黑边：
+PlayerSettings->Resolution and Pressentation-> 勾上Render outside safe area  
+												Support Aspect Ratio->Custom->up to 填2.1及以上，这个值是屏幕高宽比 能支持的最大值
+在AndroidManifest.xml文件中
+<application android:theme="@style/UnityThemeSelector" android:label="@string/app_name" android:icon="@mipmap/app_icon" android:banner="@drawable/app_banner" android:isGame="true">
+        <activity android:label="@string/app_name" android:name="com.unity3d.player.UnityPlayerActivity" android:launchMode="singleTask" android:screenOrientation="fullSensor" android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|layoutDirection|fontScale" android:hardwareAccelerated="false" android:maxAspectRatio="2.2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER"/>
+            </intent-filter>
+            <meta-data android:name="unityplayer.UnityActivity" android:value="true"/>
+            <meta-data android:name="android.notch_support" android:value="true"/>
+        </activity>
+        <meta-data android:name="unity.build-id" android:value="36a38731-28c2-4117-bc1c-2b88ac8eef0c"/>
+        <meta-data android:name="unity.splash-mode" android:value="0"/>
+        <meta-data android:name="unity.splash-enable" android:value="true"/>
+        <meta-data android:name="notch.config" android:value="portrait|landscape"/>
+    </application>
+生成了两句
+android:maxAspectRatio="2.2"
+<meta-data android:name="notch.config" android:value="portrait|landscape"/>  
+notch是缺口的意思
+
+
+主要针对三星Galaxy S10+  1440*3040  这种长屏的分辨率
